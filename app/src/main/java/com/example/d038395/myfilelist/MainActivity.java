@@ -18,8 +18,8 @@ import java.util.StringTokenizer;
 public class MainActivity extends ActionBarActivity {
 
     static final String filePathString=
-            Environment.getExternalStorageDirectory().getAbsolutePath()+
-                    File.separator;//+R.string.app_name;
+            Environment.getExternalStorageDirectory().getPath();
+    //File.separator;+R.string.app_name;
     static final File filePath= new File(filePathString);
 
     /*static boolean existPath(){
@@ -39,10 +39,10 @@ public class MainActivity extends ActionBarActivity {
             Log.e("Directory","not exist");
             return;
         }*/
-        File[] fileList=filePath.listFiles();
+        String[] fileList=filePath.list();
         ArrayAdapter adapter = new ArrayAdapter<>(this,
                 R.layout.activity_listview,
-                countryArray);
+                fileList);
         ListView listView = (ListView) findViewById(R.id.list_item);
         listView.setAdapter(adapter);
 
